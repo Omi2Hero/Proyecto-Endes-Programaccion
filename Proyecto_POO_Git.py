@@ -1,3 +1,2 @@
-class prueba:
-    pass
- 
+class Cancha:
+    def __init__(self, numero_cancha, deporte, precio, habilitada, )

@@ -1,2 +1,3 @@
 class Cancha:
-    def __init__(self, numero_cancha, deporte, precio, habilitada, )
+    def __init__(self, numero_cancha, deporte, precio, habilitada, ):
+        pass

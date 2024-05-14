@@ -6,6 +6,6 @@ class Clientes:
         self.identifcador = identificador
     
     def prueba():
+        print("HOla")
         pass
-
     

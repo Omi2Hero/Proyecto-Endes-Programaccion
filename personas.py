@@ -37,5 +37,41 @@ class Cliente:
     def listar_clientes_morosos(lista_clientes):
         return [cliente for cliente in lista_clientes if cliente.saldo < 0]
 
+class Empleado:
+    def __init__(self, nombre, apellido):
+        self.nombre = nombre
+        self.apellido = apellido
+        self.desocupado = True
+        self.tareas = []
 
+    @staticmethod
+    def crear_empleado():
+        try:
+            nombre = input("Dime el nombre del empleado: ")
+            apellido = input("Dime el apellido del empleado: ")
+        except ValueError as error:
+            print("Error:", error)
+            return None
+        return Empleado(nombre, apellido)
+
+    def registrar_empleado(self, lista_empleados):
+        lista_empleados.append(self)
+
+    def asignar_tarea(self, tarea, cancha):
+        self.tareas.append(tarea)
+        self.desocupado = False
+        cancha.empleados.append(self)
+
+    def quitar_tarea(self, tarea):
+        self.tareas.remove(tarea)
+        if not self.tareas:
+            self.desocupado = True
+
+    @staticmethod
+    def listar_empleados_desocupados(lista_empleados):
+        return [empleado for empleado in lista_empleados if empleado.desocupado]
+
+    def quitar_empleado_de_cancha(self, cancha):
+        cancha.empleados.remove(self)
+        self.desocupado = True
 

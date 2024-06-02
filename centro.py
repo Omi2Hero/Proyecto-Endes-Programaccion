@@ -77,6 +77,45 @@ class Centro:
             else:
                 print("Opción no válida. Por favor, seleccione una opción válida.")
 
+   
+
+    def mostrar_menu_reservas(self):
+        while True:
+            print("--- Gestión de Reservas ---")
+            print("1. Crear Reserva")
+            print("2. Listar Reservas por Cancha")
+            print("3. Listar Reservas por Cliente")
+            print("4. Volver al Menú Principal")
+
+            opcion = input("Seleccione una opción: ")
+
+            if opcion == "1":
+                if not self.lista_canchas:
+                    print("No hay canchas registradas. Debe agregar al menos una cancha antes de crear una reserva.")
+                else:
+                    reserva = Reserva.crear_reserva(self.lista_clientes, self.lista_canchas)
+                    if reserva:
+                        reserva.registrar_reserva(self.lista_reservas)
+
+            elif opcion == "2":
+                if not self.lista_canchas:
+                    print("No hay canchas registradas.")
+                else:
+                    numero_cancha = int(input("Ingrese el número de la cancha para listar las reservas: "))
+                    Reserva.listar_reservas_por_cancha(self.lista_reservas, numero_cancha)
+
+            elif opcion == "3":
+                if not self.lista_clientes:
+                    print("No hay clientes registrados.")
+                else:
+                    identificador_cliente = input("Ingrese el identificador del cliente para listar las reservas: ")
+                    Reserva.listar_reservas_por_cliente(self.lista_reservas, identificador_cliente)
+
+            elif opcion == "4":
+                break
+            else:
+                print("Opción no válida. Por favor, seleccione una opción válida.")
+    
     def mostrar_menu_clientes(self):
         while True:
             print("--- Gestión de Clientes ---")
@@ -117,44 +156,7 @@ class Centro:
                 break
             else:
                 print("Opción no válida. Por favor, seleccione una opción válida.")
-
-    def mostrar_menu_reservas(self):
-        while True:
-            print("--- Gestión de Reservas ---")
-            print("1. Crear Reserva")
-            print("2. Listar Reservas por Cancha")
-            print("3. Listar Reservas por Cliente")
-            print("4. Volver al Menú Principal")
-
-            opcion = input("Seleccione una opción: ")
-
-            if opcion == "1":
-                if not self.lista_canchas:
-                    print("No hay canchas registradas. Debe agregar al menos una cancha antes de crear una reserva.")
-                else:
-                    reserva = Reserva.crear_reserva(self.lista_clientes, self.lista_canchas)
-                    if reserva:
-                        reserva.registrar_reserva(self.lista_reservas)
-
-            elif opcion == "2":
-                if not self.lista_canchas:
-                    print("No hay canchas registradas.")
-                else:
-                    numero_cancha = int(input("Ingrese el número de la cancha para listar las reservas: "))
-                    Reserva.listar_reservas_por_cancha(self.lista_reservas, numero_cancha)
-
-            elif opcion == "3":
-                if not self.lista_clientes:
-                    print("No hay clientes registrados.")
-                else:
-                    identificador_cliente = input("Ingrese el identificador del cliente para listar las reservas: ")
-                    Reserva.listar_reservas_por_cliente(self.lista_reservas, identificador_cliente)
-
-            elif opcion == "4":
-                break
-            else:
-                print("Opción no válida. Por favor, seleccione una opción válida.")
-
+                
     def mostrar_menu_empleados(self):
         while True:
             print("--- Gestión de Empleados ---")

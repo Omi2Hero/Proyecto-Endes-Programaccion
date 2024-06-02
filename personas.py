@@ -48,8 +48,8 @@ class Empleado:
     @staticmethod
     def crear_empleado():
         try:
-            nombre = input("Ingrese el nombre del empleado: ")
-            apellido = input("Ingrese el apellido del empleado: ")
+            nombre = input("Dime el nombre del empleado: ")
+            apellido = input("Dime el apellido del empleado: ")
         except ValueError as error:
             print("Error:", error)
             return None
